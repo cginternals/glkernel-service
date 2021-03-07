@@ -46,11 +46,16 @@ async def get_image_from_script(script: str = Form(...)):
     glkernel_binary = os.path.join(GLKERNEL_DIRECTORY, 'glkernel-cli')
     arguments = [ glkernel_binary, "run", "--force", "--output", image_f_name, "--format", ".png", script_f_name ]
 
-    print(' '.join(arguments), flush=True)
-
-    p = subprocess.run(arguments, capture_output=True, cwd=WORKING_DIRECTORY)
-    print(p.stdout.decode("utf-8"), flush=True)
-    print(p.stderr.decode("utf-8"), flush=True)
+    try:
+        print(' '.join(arguments), flush=True)
+        p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
+    except:
+        print(p.stdout.decode("utf-8"), flush=True)
+        print(p.stderr.decode("utf-8"), flush=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=p.stderr.decode("utf-8"),
+        )
 
     return FileResponse(image_f_name, filename="kernel.png", media_type='image/png')
 
@@ -66,11 +71,16 @@ async def get_image_from_script_file(script_file: UploadFile = File(...)):
     glkernel_binary = os.path.join(GLKERNEL_DIRECTORY, 'glkernel-cli')
     arguments = [ glkernel_binary, "run", "--force", "--output", image_f_name, "--format", ".png", script_f_name ]
 
-    print(' '.join(arguments), flush=True)
-
-    p = subprocess.run(arguments, capture_output=True, cwd=WORKING_DIRECTORY)
-    print(p.stdout.decode("utf-8"), flush=True)
-    print(p.stderr.decode("utf-8"), flush=True)
+    try:
+        print(' '.join(arguments), flush=True)
+        p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
+    except:
+        print(p.stdout.decode("utf-8"), flush=True)
+        print(p.stderr.decode("utf-8"), flush=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=p.stderr.decode("utf-8"),
+        )
 
     return FileResponse(image_f_name, filename="kernel.png", media_type='image/png')
 
@@ -86,22 +96,32 @@ async def get_image_from_declaration(declaration: str = Form(...)):
     glkernel_binary = os.path.join(GLKERNEL_DIRECTORY, 'glkernel-cmd')
     arguments = [ glkernel_binary, "--i", declaration_f_name, "--o", array_f_name ]
 
-    print(' '.join(arguments), flush=True)
-
-    p = subprocess.run(arguments, capture_output=True, cwd=WORKING_DIRECTORY)
-    print(p.stdout.decode("utf-8"), flush=True)
-    print(p.stderr.decode("utf-8"), flush=True)
+    try:
+        print(' '.join(arguments), flush=True)
+        p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
+    except:
+        print(p.stdout.decode("utf-8"), flush=True)
+        print(p.stderr.decode("utf-8"), flush=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=p.stderr.decode("utf-8"),
+        )
 
     image_f, image_f_name = tempfile.mkstemp(suffix=".png", text=False)
 
     glkernel_binary = os.path.join(GLKERNEL_DIRECTORY, 'glkernel-cli')
     arguments = [ glkernel_binary, "run", "--force", "--output", image_f_name, "--format", ".png", array_f_name ]
 
-    print(' '.join(arguments), flush=True)
-
-    p = subprocess.run(arguments, capture_output=True, cwd=WORKING_DIRECTORY)
-    print(p.stdout.decode("utf-8"), flush=True)
-    print(p.stderr.decode("utf-8"), flush=True)
+    try:
+        print(' '.join(arguments), flush=True)
+        p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
+    except:
+        print(p.stdout.decode("utf-8"), flush=True)
+        print(p.stderr.decode("utf-8"), flush=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=p.stderr.decode("utf-8"),
+        )
 
     return FileResponse(image_f_name, filename="kernel.png", media_type='image/png')
 
@@ -117,22 +137,32 @@ async def get_image_from_declaration_file(declaration_file: UploadFile = File(..
     glkernel_binary = os.path.join(GLKERNEL_DIRECTORY, 'glkernel-cmd')
     arguments = [ glkernel_binary, "--i", declaration_f_name, "--o", array_f_name ]
 
-    print(' '.join(arguments), flush=True)
-
-    p = subprocess.run(arguments, capture_output=True, cwd=WORKING_DIRECTORY)
-    print(p.stdout.decode("utf-8"), flush=True)
-    print(p.stderr.decode("utf-8"), flush=True)
+    try:
+        print(' '.join(arguments), flush=True)
+        p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
+    except:
+        print(p.stdout.decode("utf-8"), flush=True)
+        print(p.stderr.decode("utf-8"), flush=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=p.stderr.decode("utf-8"),
+        )
 
     image_f, image_f_name = tempfile.mkstemp(suffix=".png", text=False)
 
     glkernel_binary = os.path.join(GLKERNEL_DIRECTORY, 'glkernel-cli')
     arguments = [ glkernel_binary, "run", "--force", "--output", image_f_name, "--format", ".png", array_f_name ]
 
-    print(' '.join(arguments), flush=True)
-
-    p = subprocess.run(arguments, capture_output=True, cwd=WORKING_DIRECTORY)
-    print(p.stdout.decode("utf-8"), flush=True)
-    print(p.stderr.decode("utf-8"), flush=True)
+    try:
+        print(' '.join(arguments), flush=True)
+        p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
+    except:
+        print(p.stdout.decode("utf-8"), flush=True)
+        print(p.stderr.decode("utf-8"), flush=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=p.stderr.decode("utf-8"),
+        )
 
     return FileResponse(image_f_name, filename="kernel.png", media_type='image/png')
 
@@ -148,11 +178,16 @@ async def get_image_from_array(array: str = Form(...)):
     glkernel_binary = os.path.join(GLKERNEL_DIRECTORY, 'glkernel-cli')
     arguments = [ glkernel_binary, "run", "--force", "--output", image_f_name, "--format", ".png", array_f_name ]
 
-    print(' '.join(arguments), flush=True)
-
-    p = subprocess.run(arguments, capture_output=True, cwd=WORKING_DIRECTORY)
-    print(p.stdout.decode("utf-8"), flush=True)
-    print(p.stderr.decode("utf-8"), flush=True)
+    try:
+        print(' '.join(arguments), flush=True)
+        p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
+    except:
+        print(p.stdout.decode("utf-8"), flush=True)
+        print(p.stderr.decode("utf-8"), flush=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=p.stderr.decode("utf-8"),
+        )
 
     return FileResponse(image_f_name, filename="kernel.png", media_type='image/png')
 
@@ -168,11 +203,16 @@ async def get_image_from_array_file(array_file: UploadFile = File(...)):
     glkernel_binary = os.path.join(GLKERNEL_DIRECTORY, 'glkernel-cli')
     arguments = [ glkernel_binary, "run", "--force", "--output", image_f_name, "--format", ".png", array_f_name ]
 
-    print(' '.join(arguments), flush=True)
-
-    p = subprocess.run(arguments, capture_output=True, cwd=WORKING_DIRECTORY)
-    print(p.stdout.decode("utf-8"), flush=True)
-    print(p.stderr.decode("utf-8"), flush=True)
+    try:
+        print(' '.join(arguments), flush=True)
+        p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
+    except:
+        print(p.stdout.decode("utf-8"), flush=True)
+        print(p.stderr.decode("utf-8"), flush=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=p.stderr.decode("utf-8"),
+        )
 
     return FileResponse(image_f_name, filename="kernel.png", media_type='image/png')
 
@@ -190,11 +230,16 @@ async def get_array_from_script(script: str = Form(...)):
     glkernel_binary = os.path.join(GLKERNEL_DIRECTORY, 'glkernel-cli')
     arguments = [ glkernel_binary, "run", "--force", "--output", array_f_name, "--format", ".json", script_f_name ]
 
-    print(' '.join(arguments), flush=True)
-
-    p = subprocess.run(arguments, capture_output=True, cwd=WORKING_DIRECTORY)
-    print(p.stdout.decode("utf-8"), flush=True)
-    print(p.stderr.decode("utf-8"), flush=True)
+    try:
+        print(' '.join(arguments), flush=True)
+        p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
+    except:
+        print(p.stdout.decode("utf-8"), flush=True)
+        print(p.stderr.decode("utf-8"), flush=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=p.stderr.decode("utf-8"),
+        )
 
     return FileResponse(array_f_name, filename="kernel.json", media_type='application/json')
 
@@ -210,11 +255,16 @@ async def get_array_from_script_file(script_file: UploadFile = File(...)):
     glkernel_binary = os.path.join(GLKERNEL_DIRECTORY, 'glkernel-cli')
     arguments = [ glkernel_binary, "run", "--force", "--output", array_f_name, "--format", ".json", script_f_name ]
 
-    print(' '.join(arguments), flush=True)
-
-    p = subprocess.run(arguments, capture_output=True, cwd=WORKING_DIRECTORY)
-    print(p.stdout.decode("utf-8"), flush=True)
-    print(p.stderr.decode("utf-8"), flush=True)
+    try:
+        print(' '.join(arguments), flush=True)
+        p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
+    except:
+        print(p.stdout.decode("utf-8"), flush=True)
+        print(p.stderr.decode("utf-8"), flush=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=p.stderr.decode("utf-8"),
+        )
 
     return FileResponse(array_f_name, filename="kernel.json", media_type='application/json')
 
@@ -230,11 +280,16 @@ async def get_array_from_declaration(declaration: str = Form(...)):
     glkernel_binary = os.path.join(GLKERNEL_DIRECTORY, 'glkernel-cmd')
     arguments = [ glkernel_binary, "--i", declaration_f_name, "--o", array_f_name ]
 
-    print(' '.join(arguments), flush=True)
-
-    p = subprocess.run(arguments, capture_output=True, cwd=WORKING_DIRECTORY)
-    print(p.stdout.decode("utf-8"), flush=True)
-    print(p.stderr.decode("utf-8"), flush=True)
+    try:
+        print(' '.join(arguments), flush=True)
+        p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
+    except:
+        print(p.stdout.decode("utf-8"), flush=True)
+        print(p.stderr.decode("utf-8"), flush=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=p.stderr.decode("utf-8"),
+        )
 
     return FileResponse(array_f_name, filename="kernel.json", media_type='application/json')
 
@@ -250,10 +305,15 @@ async def get_array_from_declaration_file(declaration_file: UploadFile = File(..
     glkernel_binary = os.path.join(GLKERNEL_DIRECTORY, 'glkernel-cmd')
     arguments = [ glkernel_binary, "--i", declaration_f_name, "--o", array_f_name ]
 
-    print(' '.join(arguments), flush=True)
-
-    p = subprocess.run(arguments, capture_output=True, cwd=WORKING_DIRECTORY)
-    print(p.stdout.decode("utf-8"), flush=True)
-    print(p.stderr.decode("utf-8"), flush=True)
+    try:
+        print(' '.join(arguments), flush=True)
+        p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
+    except:
+        print(p.stdout.decode("utf-8"), flush=True)
+        print(p.stderr.decode("utf-8"), flush=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=p.stderr.decode("utf-8"),
+        )
 
     return FileResponse(array_f_name, filename="kernel.json", media_type='application/json')
