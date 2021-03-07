@@ -76,7 +76,7 @@ RUN pip3 install -r requirements.txt
 ADD . service
 
 ENV USERNAME=glkernel-service
-ENV GLKERNEL_DIRECTORY=/opt/dependencies/gklernel/build
+ENV GLKERNEL_DIRECTORY=/opt/dependencies/glkernel/build
 ENV RESULT_DIR=/data/results
 
 # CMD ["uvicorn", "--host=0.0.0.0", "main:app"]
