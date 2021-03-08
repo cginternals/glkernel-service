@@ -4,3 +4,5 @@ services:
   service:
     ports:
       - "127.0.0.1:8075:8075"
+    environment:
+      - CORS_ALLOWED_DOMAINS=https://kernels.varg.dev

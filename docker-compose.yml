@@ -8,10 +8,12 @@ services:
       context: 'service'
       dockerfile: 'Dockerfile'
     command: [ "uvicorn", "service.main:app", "--host", "0.0.0.0", "--port", "8075" ]
+    environment:
+      - CORS_ALLOWED_DOMAINS=*
     ports:
       - "8075"
-    volumes:
-      - kernel-data:/data/results
+    tmpfs:
+      - /data/results
 
   console:
     env_file:
@@ -20,9 +22,5 @@ services:
       context: 'service'
       dockerfile: 'Dockerfile'
     command: [ "/bin/sh" ]
-    volumes:
-      - kernel-data:/data/results
-
-volumes:
-  kernel-data:
-    driver: local
+    tmpfs:
+      - /data/results
