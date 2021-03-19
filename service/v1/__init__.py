@@ -59,12 +59,12 @@ async def get_image_from_script(background_tasks: BackgroundTasks, script: str =
     try:
         print(' '.join(arguments), flush=True)
         p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
-    except:
-        print(p.stdout.decode("utf-8"), flush=True)
-        print(p.stderr.decode("utf-8"), flush=True)
+    except subprocess.CalledProcessError as e:
+        print(e.stdout.decode("utf-8"), flush=True)
+        print(e.stderr.decode("utf-8"), flush=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=p.stderr.decode("utf-8"),
+            detail=e.stderr.decode("utf-8"),
         )
     
     background_tasks.add_task(remove_temporary_files, [script_f, image_f], [script_f_name, image_f_name])
@@ -86,12 +86,12 @@ async def get_image_from_script_file(background_tasks: BackgroundTasks, script_f
     try:
         print(' '.join(arguments), flush=True)
         p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
-    except:
-        print(p.stdout.decode("utf-8"), flush=True)
-        print(p.stderr.decode("utf-8"), flush=True)
+    except subprocess.CalledProcessError as e:
+        print(e.stdout.decode("utf-8"), flush=True)
+        print(e.stderr.decode("utf-8"), flush=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=p.stderr.decode("utf-8"),
+            detail=e.stderr.decode("utf-8"),
         )
 
     background_tasks.add_task(remove_temporary_files, [script_f, image_f], [script_f_name, image_f_name])
@@ -113,12 +113,12 @@ async def get_image_from_declaration(background_tasks: BackgroundTasks, declarat
     try:
         print(' '.join(arguments), flush=True)
         p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
-    except:
-        print(p.stdout.decode("utf-8"), flush=True)
-        print(p.stderr.decode("utf-8"), flush=True)
+    except subprocess.CalledProcessError as e:
+        print(e.stdout.decode("utf-8"), flush=True)
+        print(e.stderr.decode("utf-8"), flush=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=p.stderr.decode("utf-8"),
+            detail=e.stderr.decode("utf-8"),
         )
 
     image_f, image_f_name = tempfile.mkstemp(suffix=".png", text=False)
@@ -129,12 +129,12 @@ async def get_image_from_declaration(background_tasks: BackgroundTasks, declarat
     try:
         print(' '.join(arguments), flush=True)
         p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
-    except:
-        print(p.stdout.decode("utf-8"), flush=True)
-        print(p.stderr.decode("utf-8"), flush=True)
+    except subprocess.CalledProcessError as e:
+        print(e.stdout.decode("utf-8"), flush=True)
+        print(e.stderr.decode("utf-8"), flush=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=p.stderr.decode("utf-8"),
+            detail=e.stderr.decode("utf-8"),
         )
 
     background_tasks.add_task(remove_temporary_files, [declaration_f, array_f, image_f], [declaration_f_name, array_f_name, image_f_names])
@@ -156,12 +156,12 @@ async def get_image_from_declaration_file(background_tasks: BackgroundTasks, dec
     try:
         print(' '.join(arguments), flush=True)
         p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
-    except:
-        print(p.stdout.decode("utf-8"), flush=True)
-        print(p.stderr.decode("utf-8"), flush=True)
+    except subprocess.CalledProcessError as e:
+        print(e.stdout.decode("utf-8"), flush=True)
+        print(e.stderr.decode("utf-8"), flush=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=p.stderr.decode("utf-8"),
+            detail=e.stderr.decode("utf-8"),
         )
 
     image_f, image_f_name = tempfile.mkstemp(suffix=".png", text=False)
@@ -172,12 +172,12 @@ async def get_image_from_declaration_file(background_tasks: BackgroundTasks, dec
     try:
         print(' '.join(arguments), flush=True)
         p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
-    except:
-        print(p.stdout.decode("utf-8"), flush=True)
-        print(p.stderr.decode("utf-8"), flush=True)
+    except subprocess.CalledProcessError as e:
+        print(e.stdout.decode("utf-8"), flush=True)
+        print(e.stderr.decode("utf-8"), flush=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=p.stderr.decode("utf-8"),
+            detail=e.stderr.decode("utf-8"),
         )
 
     background_tasks.add_task(remove_temporary_files, [declaration_f, array_f, image_f], [declaration_f_name, array_f_name, image_f_name])
@@ -199,12 +199,12 @@ async def get_image_from_array(background_tasks: BackgroundTasks, array: str = F
     try:
         print(' '.join(arguments), flush=True)
         p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
-    except:
-        print(p.stdout.decode("utf-8"), flush=True)
-        print(p.stderr.decode("utf-8"), flush=True)
+    except subprocess.CalledProcessError as e:
+        print(e.stdout.decode("utf-8"), flush=True)
+        print(e.stderr.decode("utf-8"), flush=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=p.stderr.decode("utf-8"),
+            detail=e.stderr.decode("utf-8"),
         )
 
     background_tasks.add_task(remove_temporary_files, [array_f, image_f], [array_f_name, image_f_name])
@@ -226,12 +226,12 @@ async def get_image_from_array_file(background_tasks: BackgroundTasks, array_fil
     try:
         print(' '.join(arguments), flush=True)
         p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
-    except:
-        print(p.stdout.decode("utf-8"), flush=True)
-        print(p.stderr.decode("utf-8"), flush=True)
+    except subprocess.CalledProcessError as e:
+        print(e.stdout.decode("utf-8"), flush=True)
+        print(e.stderr.decode("utf-8"), flush=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=p.stderr.decode("utf-8"),
+            detail=e.stderr.decode("utf-8"),
         )
 
     background_tasks.add_task(remove_temporary_files, [array_f, image_f], [array_f_name, image_f_name])
@@ -255,12 +255,12 @@ async def get_array_from_script(background_tasks: BackgroundTasks, script: str =
     try:
         print(' '.join(arguments), flush=True)
         p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
-    except:
-        print(p.stdout.decode("utf-8"), flush=True)
-        print(p.stderr.decode("utf-8"), flush=True)
+    except subprocess.CalledProcessError as e:
+        print(e.stdout.decode("utf-8"), flush=True)
+        print(e.stderr.decode("utf-8"), flush=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=p.stderr.decode("utf-8"),
+            detail=e.stderr.decode("utf-8"),
         )
 
     background_tasks.add_task(remove_temporary_files, [script_f, array_f], [script_f_name, array_f_name])
@@ -282,12 +282,12 @@ async def get_array_from_script_file(background_tasks: BackgroundTasks, script_f
     try:
         print(' '.join(arguments), flush=True)
         p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
-    except:
-        print(p.stdout.decode("utf-8"), flush=True)
-        print(p.stderr.decode("utf-8"), flush=True)
+    except subprocess.CalledProcessError as e:
+        print(e.stdout.decode("utf-8"), flush=True)
+        print(e.stderr.decode("utf-8"), flush=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=p.stderr.decode("utf-8"),
+            detail=e.stderr.decode("utf-8"),
         )
 
     background_tasks.add_task(remove_temporary_files, [script_f, array_f], [script_f_name, array_f_name])
@@ -309,12 +309,12 @@ async def get_array_from_declaration(background_tasks: BackgroundTasks, declarat
     try:
         print(' '.join(arguments), flush=True)
         p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
-    except:
-        print(p.stdout.decode("utf-8"), flush=True)
-        print(p.stderr.decode("utf-8"), flush=True)
+    except subprocess.CalledProcessError as e:
+        print(e.stdout.decode("utf-8"), flush=True)
+        print(e.stderr.decode("utf-8"), flush=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=p.stderr.decode("utf-8"),
+            detail=e.stderr.decode("utf-8"),
         )
 
     background_tasks.add_task(remove_temporary_files, [declaration_f, array_f], [declaration_f_name, array_f_name])
@@ -336,12 +336,12 @@ async def get_array_from_declaration_file(background_tasks: BackgroundTasks, dec
     try:
         print(' '.join(arguments), flush=True)
         p = subprocess.run(arguments, capture_output=True, check=True, cwd=WORKING_DIRECTORY)
-    except:
-        print(p.stdout.decode("utf-8"), flush=True)
-        print(p.stderr.decode("utf-8"), flush=True)
+    except subprocess.CalledProcessError as e:
+        print(e.stdout.decode("utf-8"), flush=True)
+        print(e.stderr.decode("utf-8"), flush=True)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=p.stderr.decode("utf-8"),
+            detail=e.stderr.decode("utf-8"),
         )
 
     background_tasks.add_task(remove_temporary_files, [declaration_f, array_f], [declaration_f_name, array_f_name])

@@ -2,15 +2,16 @@ import os
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+# from fastapi.middleware.gzip import GZipMiddleware
 
 from .v1 import router as v1_router
 
 
-app = FastAPI()
+app = FastAPI(openapi_url="/api/openapi.json", docs_url="/docs", redoc_url=None)
 
 app.include_router(
     v1_router,
-    # prefix="/v1",
+    prefix="/api",
 )
 
 
@@ -26,6 +27,7 @@ if len(origins) > 0:
         allow_headers=["*"],
     )
 
+# app.add_middleware(GZipMiddleware, minimum_size=2048) # bytes
 
 if __name__ == "__main__":
     import uvicorn

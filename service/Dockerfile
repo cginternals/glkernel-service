@@ -14,7 +14,7 @@ RUN git clone --depth 1 https://github.com/cginternals/cpplocate.git
 RUN git clone --depth 1 https://github.com/cginternals/cppassist.git
 RUN git clone --depth 1 https://github.com/cginternals/cppfs.git
 RUN git clone --depth 1 https://github.com/cginternals/cppexpose.git
-RUN git clone --depth 1 https://github.com/cginternals/glkernel.git
+RUN git clone --depth 1 --branch v0.9.0 https://github.com/cginternals/glkernel.git
 
 WORKDIR /opt/dependencies/glm
 
